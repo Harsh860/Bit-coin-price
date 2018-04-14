@@ -1,6 +1,6 @@
 # Bitcoin profit calculator
 ##### NOTE - DON'T USE  SUDO COMMAND ON WINDOWS
-
+##### NOTE - IF ERROR COMES AFTER RUNNING SERVER PLEASE UPDATE NODE JS NAD NPM TO NEWER VERSION
 ## Installation Process
 
 ### Install Node.js and NPM
