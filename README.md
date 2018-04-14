@@ -24,7 +24,7 @@ sudo npm install --save
 
 Run the following command
 ```
-node server.js
+npm start
 ```
 
 
