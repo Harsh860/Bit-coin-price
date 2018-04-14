@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type="text/javascript" src='/javascripts/initialize.js' ></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/initialize.css">
+
+
+  </head>
+
+
+
+
+  <body>
+      <div class="container">
+        <nav>
+          <div class="nav-wrapper center">
+            <a href="#" class="brand-logo center">Bit-Coin Profit Calculator</a>
+
+          </div>
+        </nav>
+
+        <br>
+        <br>
+
+        <form method="POST" action="/">
+          <div class="row">
+            <div class="col s2 inline">
+              <h5 class="center 1">Currency</h5>
+            </div>
+            <div class=" col s4 inline" name="Coin">
+
+                <select name="Coin">
+
+                  <option value="BTC">BTC</option>
+                  <option value="ETH">ETH</option>
+
+                </select>
+
+            </div>
+
+            <div class="col  s2 center inline">
+              <h5 class="center 1">Purchase Date</h5>
+            </div>
+
+            <div class=" col s4 inline">
+                <input type="text"  value="2018-04-01" name="Pdate" required=""  class="datepicker">
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col s2 inline">
+              <h5 class="center 1">Amount</h5>
+            </div>
+            <div class=" col s4 ">
+
+                <input type="text" name="amount"  required=""/>
+
+            </div>
+
+            <div class="col  s2 center inline">
+              <h5 class="center 1">Sell Date</h5>
+            </div>
+
+            <div class="col s4">
+                <input type="text" value="2018-04-02" name="Sdate"  class="datepicker">
+            </div>
+
+          </div>
+          <div class="center">
+          <button class="btn waves-effect waves-light center" type="submit" name="action">Submit</button>
+        </div>
+        </form>
+
+        <br>
+        <br>
+
+        <% if(priceP >= 0  && priceS >= 0 && err===-1){ %>
+
+
+
+              <div class="card">
+
+                  <% if(priceS >= priceP){ %>
+                    <div class="row">
+                      <div class="col s2">
+                      </div>
+                      <div class="col s2">
+                        <br>
+                        <br>
+                    <i class="material-icons large">thumb_up</i>
+
+                    </div>
+                    <div class="col s3">
+                    </div>
+                    <div class="col s5">
+                        <h5>You made profit of <%=Profit %> USD</h5>
+                        <% } %>
+
+                <% if(priceS < priceP){ %>
+                  <div class="row">
+                    <div class="col s2">
+                    </div>
+                    <div class="col s2">
+                      <br>
+                      <br>
+                  <i class="material-icons large">thumb_down</i>
+
+                  </div>
+                  <div class="col s3">
+                  </div>
+                  <div class="col s5">
+                      <h5>You suffered loss of <%=-1*Profit %> USD</h5>
+                      <% } %>
+
+                        <p><h5>You purchased <%=Amount %> <%=Coin %> coins @ <%=priceP %> worth <%=Amount*priceP %></h5></p>
+                        <p><h5>You sold <%=Amount %> <%=Coin %> coins @ <%=priceS %> worth <%=Amount*priceS %></h5></p>
+                            <% if(priceS >= priceP){ %>
+
+                                <p><h5>The Tax on profit is <%=0.3*Profit %></h5></p>
+                              <% } %>
+
+                    </div>
+
+                  </div>
+
+
+
+                <div class="col s2">
+
+                </div>
+                <div class="card-stacked">
+                  <div class="card-content">
+
+                  </div>
+
+                </div>
+            </div>
+
+
+
+
+
+
+          <% } %>
+
+          <% if(err===1){ %>
+
+              <div class="col s12">
+
+                  <div class="card horizontal center">
+                    <div class="row">
+                      <div class="col s3">
+                      </div>
+                      <div class="col s9">
+                      <h3 class="center"> Invalid Input (Amount should be float or integer)</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+            <% } %>
+      </div>
+
+
+
+
+  </body>
+</html>
